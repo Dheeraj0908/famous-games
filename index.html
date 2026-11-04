@@ -69,7 +69,8 @@ main { padding: 15px 0; }
   width: 100%; min-width: 0; position: relative; overflow: hidden; isolation: isolate;
   padding: 10px 12px; border: 1px solid #ffffff26; border-left: 3px solid var(--accent);
   border-radius: 10px; background: linear-gradient(145deg, #28233e, #171b30 80%);
-  text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s;
+  text-decoration: none; color: var(--ink); cursor: pointer;
+  transition: border-color .15s, transform .15s, box-shadow .15s;
 }
 .game.word { --accent: #6df0bc; background: linear-gradient(145deg, #21383e, #171b30 80%); }
 .game::before {
@@ -80,7 +81,13 @@ main { padding: 15px 0; }
   mask-image: linear-gradient(#000, transparent);
 }
 .game:focus-visible, footer a:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
-@media (hover: hover) { .game:hover { border-color: var(--accent); transform: translateY(-2px); } }
+@media (hover: hover) {
+  .game:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 5px 18px #0005; }
+  .game:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
+  .game:hover .download { background: #e9ff9c; }
+}
+.game:active { transform: translateY(1px); }
+.game:active .download { box-shadow: inset 0 2px 4px #0004; }
 .icon {
   display: block; width: 52px; height: 52px; object-fit: cover;
   border-radius: 11px; border: 1px solid #ffffff32; box-shadow: 0 3px 10px #0005;
@@ -93,7 +100,7 @@ main { padding: 15px 0; }
 h3 { font-size: 16px; line-height: 1.2; margin: 0; overflow-wrap: anywhere; }
 .download {
   display: flex; justify-content: center; align-items: center; gap: 6px;
-  min-height: 44px; padding: 3px 12px 5px; text-align: center;
+  min-height: 46px; padding: 3px 12px 5px; text-align: center;
   background: var(--lime); color: #162006; border-radius: 5px;
   box-shadow: inset 0 -3px #0004;
 }
