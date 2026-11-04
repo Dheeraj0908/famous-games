@@ -30,7 +30,7 @@ body {
     radial-gradient(ellipse at 95% 30%, #17495777, transparent 45%),
     #0e1020;
 }
-.shell { max-width: 1170px; padding: 0 22px; margin: 0 auto; }
+.shell { max-width: 760px; padding: 0 22px; margin: 0 auto; }
 header {
   display: flex; align-items: center; justify-content: space-between;
   gap: 10px; min-height: 76px; border-bottom: 1px solid #ffffff25;
@@ -59,14 +59,15 @@ main { padding: 15px 0; }
 .catalog-label::after { content: ""; height: 1px; flex: 1; background: #ffffff20; }
 .games {
   list-style: none; padding: 0; margin: 0; display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px;
+  grid-template-columns: minmax(0, 1fr); gap: 10px;
 }
 .games li { display: flex; min-width: 0; }
 .game {
   --accent: #b89cff;
-  display: grid; grid-template-rows: 52px 1fr auto; gap: 7px;
+  display: grid; grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center; gap: 14px;
   width: 100%; min-width: 0; position: relative; overflow: hidden; isolation: isolate;
-  padding: 10px; border: 1px solid #ffffff26; border-top: 2px solid var(--accent);
+  padding: 10px 12px; border: 1px solid #ffffff26; border-left: 3px solid var(--accent);
   border-radius: 10px; background: linear-gradient(145deg, #28233e, #171b30 80%);
   text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s;
 }
@@ -80,19 +81,19 @@ main { padding: 15px 0; }
 }
 .game:focus-visible, footer a:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
 @media (hover: hover) { .game:hover { border-color: var(--accent); transform: translateY(-2px); } }
-.game-top { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
 .icon {
   display: block; width: 52px; height: 52px; object-fit: cover;
   border-radius: 11px; border: 1px solid #ffffff32; box-shadow: 0 3px 10px #0005;
 }
 .genre {
-  font: 700 9px/1.15 ui-monospace, monospace; letter-spacing: .04em; text-align: right;
+  display: block; margin-top: 5px;
+  font: 700 9px/1.15 ui-monospace, monospace; letter-spacing: .08em;
   text-transform: uppercase; color: var(--accent);
 }
-h3 { font-size: 15px; line-height: 1.15; margin: 0; min-height: 2.3em; }
+h3 { font-size: 16px; line-height: 1.2; margin: 0; overflow-wrap: anywhere; }
 .download {
   display: flex; justify-content: center; align-items: center; gap: 6px;
-  min-height: 44px; padding: 3px 4px 5px; text-align: center;
+  min-height: 44px; padding: 3px 12px 5px; text-align: center;
   background: var(--lime); color: #162006; border-radius: 5px;
   box-shadow: inset 0 -3px #0004;
 }
@@ -105,7 +106,6 @@ footer {
 }
 footer a { color: #dfceff; text-decoration: none; }
 footer a:hover { text-decoration: underline; }
-@media (max-width: 860px) { .games { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 580px) {
   .shell { padding: 0 12px; }
   header { min-height: 60px; }
@@ -113,10 +113,11 @@ footer a:hover { text-decoration: underline; }
   h1 { font-size: 20px; }
   main { padding: 8px 0 10px; }
   .catalog-label { margin-bottom: 7px; }
-  .games { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  .game { padding: 7px; gap: 5px; grid-template-rows: 42px 1fr auto; }
+  .games { gap: 8px; }
+  .game { padding: 8px; gap: 9px; grid-template-columns: 42px minmax(0, 1fr) auto; }
   .icon { width: 42px; height: 42px; border-radius: 9px; }
-  h3 { font-size: 13px; min-height: 2.3em; }
+  h3 { font-size: 13px; }
+  .download { padding-inline: 7px; }
   .download strong { font-size: 10px; }
   .download svg { width: 13px; height: 13px; }
 }
@@ -138,11 +139,11 @@ footer a:hover { text-decoration: underline; }
       <!-- Add a game by copying a list item and replacing its icon, name, genre and Google Play URL. -->
       <li>
         <a class="game" href="https://play.google.com/store/apps/details?id=com.mounts.game" aria-label="Download Puzzle Block Color from the Play Store">
-          <div class="game-top">
-            <img class="icon" src="assets/puzzle-block-color.webp" alt="" width="52" height="52">
-            <span class="genre">Block<br>puzzle</span>
+          <img class="icon" src="assets/puzzle-block-color.webp" alt="" width="52" height="52">
+          <div>
+            <h3>Puzzle Block Color</h3>
+            <span class="genre">Block puzzle</span>
           </div>
-          <h3>Puzzle Block Color</h3>
           <span class="download">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
             <span><strong>Download now</strong><small>from Play Store</small></span>
@@ -151,11 +152,11 @@ footer a:hover { text-decoration: underline; }
       </li>
       <li>
         <a class="game word" href="https://play.google.com/store/apps/details?id=com.letterlight.game" aria-label="Download CrackIt Cryptogram Word Puzzle from the Play Store">
-          <div class="game-top">
-            <img class="icon" src="assets/crackit.webp" alt="" width="52" height="52">
-            <span class="genre">Word<br>puzzle</span>
+          <img class="icon" src="assets/crackit.webp" alt="" width="52" height="52">
+          <div>
+            <h3>CrackIt Cryptogram Word Puzzle</h3>
+            <span class="genre">Word puzzle</span>
           </div>
-          <h3>CrackIt Cryptogram Word Puzzle</h3>
           <span class="download">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
             <span><strong>Download now</strong><small>from Play Store</small></span>
