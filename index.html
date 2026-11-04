@@ -84,10 +84,10 @@ main { padding: 15px 0; }
 @media (hover: hover) {
   .game:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 5px 18px #0005; }
   .game:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
-  .game:hover .download { background: #e9ff9c; }
+  .game:hover .download { background: color-mix(in srgb, var(--accent) 30%, #171b30); }
 }
 .game:active { transform: translateY(1px); }
-.game:active .download { box-shadow: inset 0 2px 4px #0004; }
+.game:active .download { box-shadow: inset 0 2px 5px #0007; }
 .icon {
   display: block; width: 52px; height: 52px; object-fit: cover;
   border-radius: 11px; border: 1px solid #ffffff32; box-shadow: 0 3px 10px #0005;
@@ -101,8 +101,10 @@ h3 { font-size: 16px; line-height: 1.2; margin: 0; overflow-wrap: anywhere; }
 .download {
   display: flex; justify-content: center; align-items: center; gap: 6px;
   min-height: 46px; padding: 3px 12px 5px; text-align: center;
-  background: var(--lime); color: #162006; border-radius: 5px;
-  box-shadow: inset 0 -3px #0004;
+  background: color-mix(in srgb, var(--accent) 17%, #171b30);
+  color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 65%, #171b30);
+  border-radius: 7px; box-shadow: inset 0 -2px #0005;
+  transition: background .15s;
 }
 .download svg { flex: none; width: 15px; height: 15px; }
 .download strong { display: block; font-size: 11px; line-height: 1.15; text-transform: uppercase; }
